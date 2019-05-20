@@ -6,6 +6,7 @@ const About = () => {
     return (
         <div>
             <div className = "background">
+            <img src="" className="mainLogo"alt="Recipe Rolodex Logo"></img>
             <img src="../rustic-vegan.jpg" className="mainLogo"alt="Recipe Rolodex Logo"></img>
             <div className="about">
            <p className = "desc">
@@ -23,3 +24,4 @@ const About = () => {
 };
 
 export default About;
+
