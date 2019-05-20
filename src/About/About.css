@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 .background {
     background-image: url("../rustic-vegan.jpg");
     background-size: 100%;
@@ -27,7 +26,7 @@
 .showAll {
     width: 130px;
     height: 50px;
-    margin: 0;
+    margin: 0 auto;
     background-color: #A5D1F4;
     text-align: center;
     position: relative;
@@ -38,4 +37,3 @@
     text-align: center;
     padding-left: 7px;
 }
->>>>>>> Stashed changes

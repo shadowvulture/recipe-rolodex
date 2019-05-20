@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import React from 'react';
 
 const Create = () => {
@@ -24,4 +22,3 @@ const Create = () => {
 };
 
 export default Create;
->>>>>>> Stashed changes
