@@ -12,8 +12,10 @@ function App() {
       </header>
       <main>
         <Switch>
-          <Route exact path= "/api/" component={About} />
-          <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Show {...routerProps}/>}/>
+          <Route exact path= "/api" component={About} />
+          <Route exact path="/api/recipes" component={Show}/>
+          <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
+          <Route exact path="/recipes/create" render= {<Create/>}/>
         </Switch>
       </main>
     </div>
