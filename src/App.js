@@ -1,8 +1,11 @@
 import React from 'react';
 import './App.css';
 import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
-import Navbar from './Navbar/Navbar'
-import About from './About/About'
+import Navbar from './Navbar/Navbar';
+import Show from './Show/Show';
+import About from './About/About';
+import Create from './Create/Create';
+import Recipe from './Recipe/Recipe'
 
 function App() {
   return (
@@ -10,8 +13,14 @@ function App() {
       <header className="App-header">
           <Navbar/>
       </header>
-      <About />
-     
+      <main>
+        <Switch>
+          <Route exact path= "/api" component={About} />
+          <Route exact path="/api/recipes" component={Show}/>
+          <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
+          <Route exact path="/recipes/create" render= {<Create/>}/>
+        </Switch>
+      </main>
     </div>
   );
 }
