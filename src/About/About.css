@@ -1,0 +1,38 @@
+.background {
+    background-image: url("../rustic-vegan.jpg");
+    background-size: 100vw;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+  
+.desc {
+}
+.about {
+    margin: 15px 25vw 0 25vw;
+    width: 600px;
+    text-align: center;
+    color: #0068C5;
+    background-color: #A5D1F4;
+}
+.mainLogo {
+    width: 600px;
+    height: 150px;
+    margin: 150px 25vw 0 25vw;
+    background-color: royalblue;
+}
+.showAll {
+    width: 130px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #A5D1F4;
+    text-align: center;
+    position: relative;
+    
+}
+.showAllText {
+    position: absolute;
+    text-align: center;
+    padding-left: 7px;
+}
