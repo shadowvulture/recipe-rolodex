@@ -1,6 +1,6 @@
 
 .Create {
-	margin: 0 auto;
+	margin: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
