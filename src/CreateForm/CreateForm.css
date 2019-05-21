@@ -1,6 +1,6 @@
 
 .Create {
-	margin: 0 auto;
+	margin: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -14,6 +14,9 @@
 	width: 20%;
 	min-width: 200px;
 	margin: 20px auto;
+	font-size: 20px;
+	color: #67615C;
+	font-weight: bold; 
 }
 
 .Create-Form {
@@ -40,3 +43,8 @@
 	margin: 0 auto;
 	min-width: 100px;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #67615C;
+	opacity: .8; /* Firefox */
+  }
