@@ -10,20 +10,21 @@ import CreateForm from './CreateForm/CreateForm';
 import Recipe from './Recipe/Recipe'
 
 class App extends Component {
-  constructor () { 
-    super ()
+  constructor (props) { 
+    super (props)
     this.state = {
-      Recipes: []
+      allRecipes: []
     }
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
- 
+
 
   componentDidMount () {
     axios.get('https://reactreciperolodex.herokuapp.com/api/recipe/recipes')
       .then((res) => {
         console.log(res)
         this.setState({
-          Recipes: res.data
+          allRecipes: res.data
         }, () => {
           console.log('after', this.state)
         })
@@ -44,7 +45,7 @@ class App extends Component {
       <main>
         <Switch>
           <Route exact path= "/" component={About} />
-          <Route exact path="/api/recipes" component={Show}/>
+          <Route exact path="/api/recipes" render={(routerProps) => <Show {...routerProps} {...this.state} />} />
           <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
           <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
