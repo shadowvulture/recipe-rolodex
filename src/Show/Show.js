@@ -9,24 +9,28 @@ const Show = () => {
                 <div className ="recipeContainer">
                     <h3>Recipe Title</h3>
                     <div className ="recipeCard">
-                    <img src="https://via.placeholder.com/150x150" alt="food image"></img> <br />
-                    Recipe Details <br />
-                    Service Size <br />
-                    Cooktime <br />
-                    Link to recipe page
+                    <img src="https://via.placeholder.com/150x150" className="recipeImage" alt="food image"></img> <br />
+                    <div className ="recipeText">
+                            Recipe Details <br />
+                            Service Size <br />
+                            Cooktime <br />
+                            Link to recipe page
+                        </div>
                     </div>
                 </div>
                 <div className ="recipeContainer">
                     <h3>Recipe Title</h3>
                     <div className ="recipeCard">
-                    <img src="https://via.placeholder.com/150x150" alt="food image"></img> <br />
-                    Recipe Details <br />
-                    Service Size <br />
-                    Cooktime <br />
-                    Link to recipe page
+                    <img src="https://via.placeholder.com/150x150" className ="recipeImage" alt="food image"></img> <br />
+                        <div className ="recipeText">
+                            Recipe Details <br />
+                            Service Size <br />
+                            Cooktime <br />
+                            Link to recipe page
+                        </div>
                     </div>
                 </div>  
-                <div className ="recipeContainer">
+                {/* <div className ="recipeContainer">
                     <h3>Recipe Title</h3>
                     <div className ="recipeCard">
                     <img src="https://via.placeholder.com/150x150" alt="food image"></img> <br />
@@ -45,7 +49,7 @@ const Show = () => {
                     Cooktime <br />
                     Link to recipe page
                     </div>
-                </div>    
+                </div>     */}
             </div>
         </div>
     );
