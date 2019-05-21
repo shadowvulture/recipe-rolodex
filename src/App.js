@@ -4,7 +4,7 @@ import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Show from './Show/Show';
 import About from './About/About';
-import Create from './Create/Create';
+import CreateForm from './CreateForm/CreateForm';
 import Recipe from './Recipe/Recipe'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route exact path= "/" component={About} />
           <Route exact path="/api/recipes" component={Show}/>
           <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
-          <Route exact path="/recipes/create" render= {<Create/>}/>
+          <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
       </main>
     </div>
