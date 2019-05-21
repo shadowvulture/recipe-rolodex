@@ -11,8 +11,6 @@ class CreateItem extends Component {
     render() {
         return (
             <div className="ingredientsInput">
-                <button className="buttons buttonMinus" onClick={this.decreaseCount}> - </button>
-                <button className="buttons buttonPlus" onClick={this.incrementCount}> + </button>
                 <input
                     className="Create-Input ingredientAmt"
                     type="text" 

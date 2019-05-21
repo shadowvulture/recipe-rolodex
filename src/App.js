@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Show from './Show/Show';
 import About from './About/About';
