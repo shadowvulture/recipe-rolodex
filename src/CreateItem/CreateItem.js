@@ -16,7 +16,7 @@ class CreateItem extends Component {
                     type="text" 
                     value={this.state.inputValue}
                     onChange={this.handleChange}
-                    name="ingredientAmount"
+                    name={`${this.props.name}-amt`}
                     placeholder="Amount"
                 />
                 <input
@@ -24,7 +24,7 @@ class CreateItem extends Component {
                     type="text" 
                     value={this.state.inputValue}
                     onChange={this.handleChange}
-                    name="ingredientItem"
+                    name={`${this.props.name}-item`}
                     placeholder="Ingredient"
                 />
                 </div>

@@ -1,3 +1,7 @@
 .ingredientsInput {
     margin: 0 auto;
 } 
+
+.ingredientAmt {
+    width: 5%;
+}

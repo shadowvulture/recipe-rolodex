@@ -5,7 +5,7 @@ class IngredientList extends Component {
     render() {
                 let counters = []
                 for (let i =0; i < this.props.counter; i++){
-                    counters.push(<CreateItem key={i}/>)
+                    counters.push(<CreateItem key={i} name={`ingredient-${i}`}/>)
                 }
         return (
             <div>
