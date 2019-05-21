@@ -1,11 +1,12 @@
+
 .background {
     background-image: url("../rustic-vegan.jpg");
     background-repeat: no-repeat;
     background-size: 100vw;
     width: 100vw;
     height: 100vh;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
+    padding: 0;
+    margin: 0;
   }
   
 .desc {
@@ -39,5 +40,5 @@
     text-align: center;
     padding-left: 7px;
     color: #011C13;
-    
 }
+
