@@ -24,4 +24,9 @@
     padding: 0;
     font-size: 2rem;
     font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+}
+
+.navbar h2 {
+    font-size: 18px;
 }
