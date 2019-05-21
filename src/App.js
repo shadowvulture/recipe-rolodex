@@ -1,14 +1,42 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import axios from 'axios'
 import Navbar from './Navbar/Navbar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
 import Recipe from './Recipe/Recipe'
 
-function App() {
-  return (
+class App extends Component {
+  constructor () { 
+    super ()
+    this.state = {
+      Recipes: []
+    }
+  }
+ 
+
+  componentDidMount () {
+    axios.get('https://reactreciperolodex.herokuapp.com/api/recipe/recipes')
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          Recipes: res.data
+        }, () => {
+          console.log('after', this.state)
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+
+      })
+      console.log('before', this.state)
+  }
+
+  render() { 
+    return (
     <div className="App">
       <header className="App-header">
           <Navbar/>
@@ -24,5 +52,6 @@ function App() {
     </div>
   );
 }
+  }
 
 export default App;
