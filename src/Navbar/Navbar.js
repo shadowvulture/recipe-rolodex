@@ -7,7 +7,7 @@ const Navbar = () => {
         <div>
             <nav className="navbar">
                 <NavLink to= "/">
-                    <h1>Recipe Rolodex</h1>
+                    <h1><i class="material-icons md-24">tab</i>Recipe Rolodex</h1>
                 </NavLink>
                 <NavLink to= "/recipes/create">
                     <h2>Create New Recipe</h2>
