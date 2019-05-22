@@ -1,14 +1,43 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch} from 'react-router-dom';
+import axios from 'axios'
 import Navbar from './Navbar/Navbar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
 import Recipe from './Recipe/Recipe'
 
-function App() {
-  return (
+class App extends Component {
+  constructor (props) { 
+    super (props)
+    this.state = {
+      allRecipes: []
+    }
+    this.componentDidMount = this.componentDidMount.bind(this)
+  }
+
+
+  componentDidMount () {
+    axios.get('https://reactreciperolodex.herokuapp.com/api/recipe/recipes')
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          allRecipes: res.data
+        }, () => {
+          console.log('after', this.state)
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+
+      })
+      console.log('before', this.state)
+  }
+
+  render() { 
+    return (
     <div className="App">
       <header className="App-header">
           <Navbar/>
@@ -16,7 +45,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path= "/" component={About} />
-          <Route exact path="/api/recipes" component={Show}/>
+          <Route exact path="/api/recipes" render={(routerProps) => <Show {...routerProps} {...this.state} />} />
           <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
           <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
@@ -24,5 +53,6 @@ function App() {
     </div>
   );
 }
+  }
 
 export default App;

@@ -13,9 +13,11 @@ const About = () => {
            </p> 
            </div>
            <div className ="showAll">
+                <Link to ="/api/recipes">
                 <p className="showAllText">
                 Show All Recipes
                 </p>
+                </Link>
            
            </div>
            </div>

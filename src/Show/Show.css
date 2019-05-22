@@ -1,24 +1,47 @@
+
+  body {
+      background-color: #011C13;
+  }
 .topRow {
     display: flex;
-    flex-direction: row;
-    margin: 30px 20px 0 20px;
-    /* position: absolute; */
+    flex-direction: column;
+    margin: 70px 20px 0 20px;
+   
 }
 .recipeContainer {
-    /* position: relative; */
-    width: 300px;
-    height: 400px;
-    background-color: #67615C;
-    margin: 100px 10px 0 10px;
-    padding-top: 20px;
+    
+    width: 75vw;
+    height: 300px;
+    background-color: #4CBABD;
+    margin: 20px auto;
+    /* padding-top: 20px; */
     text-align: center;
+    color: #67615C;
+    font-family: 'Dancing Script', cursive;
+    
+}
+.recipeContainer h3 {
+    font-family: 'Dancing Script', cursive;
 }
 .recipeCard {
-    /* position: relative; */
+   
     padding-top: 10px;
     width: 82%;
-    height: 82%;
+    height: 75%;
     margin: 0 auto;
     background-color: #E3D2C7;
-
+    display: flex;
+    flex-direction: row;
+}
+.recipeImage {
+   margin: 5px 0 5px 15px;
+   padding: 0 10px 25px 0px;
+   width: 220px;
+   height: 220px;
+}
+.recipeText {
+    margin: auto;
+    text-decoration: underline;
+    color: #011C13;
+    font-family: 'Dancing Script', cursive;
 }
