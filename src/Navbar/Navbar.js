@@ -9,7 +9,7 @@ const Navbar = () => {
                 <NavLink to= "/">
                     <h1>Recipe Rolodex</h1>
                 </NavLink>
-                <NavLink to= "/api/new-recipe">
+                <NavLink to= "/api/recipe/new-recipe">
                     <h2>Create New Recipe</h2>
                 </NavLink>
             </nav>

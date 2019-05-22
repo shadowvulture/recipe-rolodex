@@ -6,7 +6,6 @@ class CreateForm extends Component {
     constructor(props){
       super(props);
       this.state = {
-          inputValue: '',
           ingredientField: 3
         };
     }
@@ -20,7 +19,10 @@ class CreateForm extends Component {
 
       this.props.newRecipe(this.state)
     }
-    increaseingredientField = () => {
+  increaseingredientField = ( evt ) =>
+  {
+    evt.preventDefault()
+
         let ingredientField = this.state.ingredientField + 1;
         this.setState({
             ingredientField
@@ -28,7 +30,10 @@ class CreateForm extends Component {
         console.log(this.state.ingredientField)
     }
 
-    decreaseingredientField = () => {
+  decreaseingredientField = ( evt ) =>
+  {
+    evt.preventDefault()
+
         let ingredientField = this.state.ingredientField - 1;
 
         this.setState({
@@ -61,7 +66,7 @@ class CreateForm extends Component {
                 <input
                     className="Create-Input"
                     type="text"
-                    name="cooktime"
+                    name="Cooktime"
                     value={this.state.value}
                     onChange={this.handleChange}
                     placeholder="Estimated Cooking Time"

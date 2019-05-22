@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   newRecipe (input) {
-    axios.post('https://reactreciperolodex.herokuapp.com/api/recipe/create', input).then(res => {
+    axios.post('https://reactreciperolodex.herokuapp.com/api/recipe/new-recipe', input).then(res => {
       console.log(res)
     })
   }
@@ -52,7 +52,7 @@ class App extends Component {
           <Route exact path= "/" component={About} />
           <Route exact path="/api/recipes" render={(routerProps) => <Show {...routerProps} {...this.state} />} />
           {/* <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/> */}
-            <Route exact path="/api/new-recipe" render={( routerProps ) =>
+            <Route exact path="/api/recipe/new-recipe" render={( routerProps ) =>
               <CreateForm
               {...this.state}
               newRecipe={this.newRecipe}/>}/>
