@@ -4,16 +4,11 @@ import './About.css';
 
 const About = () => {
     return (
-        <div>
-            <div className = "background">
-            
-           </div>
-           <div className ="showAll">
-                <Link to ="/api/recipes" className="showAllButton">
-                    Show All Recipes
-                </Link>
-           
-           </div>
+        <div className="about-page">
+            <div className = "background"></div>
+            <div className="largeLogo">
+                <h1>Recipe Rolodex</h1>
+            </div>
         </div>
     );
 };
