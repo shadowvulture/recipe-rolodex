@@ -18,22 +18,27 @@ class App extends Component {
     this.componentDidMount = this.componentDidMount.bind(this)
   }
 
+  refreshData = () => {
+    axios.get('https://reactreciperolodex.herokuapp.com/api/recipe/recipes')
+    .then((res) => {
+      console.log(res)
+      this.setState({
+        allRecipes: res.data
+      }, () => {
+        console.log('after', this.state)
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+
+    })
+
+  }
+
 
   componentDidMount () {
-    axios.get('https://reactreciperolodex.herokuapp.com/api/recipe/recipes')
-      .then((res) => {
-        console.log(res)
-        this.setState({
-          allRecipes: res.data
-        }, () => {
-          console.log('after', this.state)
-        })
-      })
-      .catch((err) => {
-        console.log(err)
-
-      })
-      console.log('before', this.state)
+    this.refreshData()
+      // console.log('before', this.state)
   }
 
   render() { 
@@ -45,7 +50,7 @@ class App extends Component {
       <main>
         <Switch>
           <Route exact path= "/" component={About} />
-          <Route exact path="/api/recipes" render={(routerProps) => <Show {...routerProps} {...this.state} />} />
+          <Route exact path="/api/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
           <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
           <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>

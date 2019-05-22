@@ -1,12 +1,31 @@
 import React, { Component } from 'react'
 import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import './Show.css';
+import Axios from 'axios';
 
 class Show extends Component {
     constructor (props) {
         super (props);
+        this.state = {
+            recipes: []
+        }
         
-        
+    }
+
+
+    deleteRecipe = id => {
+    const self = this 
+    console.log(id)
+    // console.log(`${this.props.allRecipes.filter(id => id)} allRecipes`)
+    let newUrl = 'https://reactreciperolodex.herokuapp.com/api/recipe/delete/' + id
+    console.log(newUrl)
+    Axios.delete(newUrl).then(res => {
+        console.log(res)
+        console.log(res.data)
+        this.props.refreshData()
+       
+    })
+    
     }
     render() {
     
@@ -22,7 +41,12 @@ class Show extends Component {
             return (
                
            <div className="recipeContainer">
-           <h3>{item.Title}</h3>
+           <h3>{item.Title}<button class="material-icons" 
+                type='submit'
+                name='_id'
+                value={item._id}
+                onClick={() => this.deleteRecipe(item._id)}>delete_forever</button></h3>
+           
                 <div className="recipeCard">
                     <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
                     <div className="recipeText">
