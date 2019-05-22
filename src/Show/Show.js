@@ -24,11 +24,13 @@ class Show extends Component {
            <div className="recipeContainer">
            <h3>{item.Title}</h3>
                 <div className="recipeCard">
-           <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
-           <div className="recipeText">
-               <p>Cooketime: {item.Cooktime}</p>
-               <p>Instructions: {item.Instructions}</p>
-               </div>
+                    <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
+                    <div className="recipeText">
+                        <p className="boldText">Cook Time: </p>
+                        <p>{item.Cooktime}</p>
+                        <p className ="boldText">Instructions: </p>
+                        <p>{item.Instructions}</p>
+                    </div>
                 </div>
            </div>     
           
