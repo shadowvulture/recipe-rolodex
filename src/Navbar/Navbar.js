@@ -9,10 +9,10 @@ const Navbar = () => {
                 <NavLink to= "/">
                     <h1>Recipe Rolodex</h1>
                 </NavLink>
-                <NavLink to= "/recipes/create">
+                <NavLink to= "/api/new-recipe">
                     <h2>Create New Recipe</h2>
                 </NavLink>
-            </nav>  
+            </nav>
         </div>
     );
 };

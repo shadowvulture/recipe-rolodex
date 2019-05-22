@@ -10,7 +10,7 @@ import CreateForm from './CreateForm/CreateForm';
 import Recipe from './Recipe/Recipe'
 
 class App extends Component {
-  constructor (props) { 
+  constructor (props) {
     super (props)
     this.state = {
       allRecipes: []
@@ -18,6 +18,11 @@ class App extends Component {
     this.componentDidMount = this.componentDidMount.bind(this)
   }
 
+  newRecipe (input) {
+    axios.post('https://reactreciperolodex.herokuapp.com/api/recipe/create', input).then(res => {
+      console.log(res)
+    })
+  }
 
   componentDidMount () {
     axios.get('https://reactreciperolodex.herokuapp.com/api/recipe/recipes')
@@ -36,7 +41,7 @@ class App extends Component {
       console.log('before', this.state)
   }
 
-  render() { 
+  render() {
     return (
     <div className="App">
       <header className="App-header">
@@ -46,8 +51,11 @@ class App extends Component {
         <Switch>
           <Route exact path= "/" component={About} />
           <Route exact path="/api/recipes" render={(routerProps) => <Show {...routerProps} {...this.state} />} />
-          <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
-          <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
+          {/* <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/> */}
+            <Route exact path="/api/new-recipe" render={( routerProps ) =>
+              <CreateForm
+              {...this.state}
+              newRecipe={this.newRecipe}/>}/>
         </Switch>
       </main>
     </div>
