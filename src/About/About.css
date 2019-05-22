@@ -2,7 +2,7 @@
 .background {
     position: relative;
     top: -30px;
-    height: 95vh;
+    height: 100vh;
     background-image: linear-gradient(
         to right bottom,
         rgba(102, 243, 236, 0.4), 

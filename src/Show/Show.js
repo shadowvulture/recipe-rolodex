@@ -41,7 +41,7 @@ class Show extends Component {
             return (
                
            <div className="recipeContainer">
-           <h3>{item.Title}<button class="material-icons" 
+           <h3>{item.Title}<button class="material-icons trash-button" 
                 type='submit'
                 name='_id'
                 value={item._id}
