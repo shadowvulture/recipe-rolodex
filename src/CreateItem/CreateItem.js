@@ -11,14 +11,12 @@ class CreateItem extends Component {
     render() {
         return (
             <div className="ingredientsInput">
-                <button className="buttons buttonMinus" onClick={this.decreaseCount}> - </button>
-                <button className="buttons buttonPlus" onClick={this.incrementCount}> + </button>
                 <input
                     className="Create-Input ingredientAmt"
                     type="text" 
                     value={this.state.inputValue}
                     onChange={this.handleChange}
-                    name="ingredientAmount"
+                    name={`${this.props.name}-amt`}
                     placeholder="Amount"
                 />
                 <input
@@ -26,7 +24,7 @@ class CreateItem extends Component {
                     type="text" 
                     value={this.state.inputValue}
                     onChange={this.handleChange}
-                    name="ingredientItem"
+                    name={`${this.props.name}-item`}
                     placeholder="Ingredient"
                 />
                 </div>

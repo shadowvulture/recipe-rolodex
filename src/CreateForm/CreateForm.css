@@ -48,3 +48,23 @@
 	color: #67615C;
 	opacity: .8; /* Firefox */
   }
+
+.IngredientModifierButtons {
+	display: inline;
+	margin: 0 auto;
+	padding-right: 5%;
+}
+
+ul .IngredientModifierButtons {
+	padding: 0px 40px;
+	line-height: 24px;
+}
+
+.buttonMinus {
+	width: 25px;
+	margin-right: 5px;
+}
+
+.ingredientList {
+	margin: 0 auto;
+}

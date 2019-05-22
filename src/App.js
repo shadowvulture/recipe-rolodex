@@ -1,7 +1,7 @@
 // import React from 'react';
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import axios from 'axios'
 import Navbar from './Navbar/Navbar';
 import Show from './Show/Show';

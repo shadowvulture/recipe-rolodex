@@ -1,41 +1,42 @@
 import React, {Component} from 'react';
 import './CreateForm.css';
-import CreateItem from '../CreateItem/CreateItem';
+import IngredientList from './IngredientList';
 
 class CreateForm extends Component {
     constructor(props){
       super(props);
       this.state = {
           inputValue: '',
-          count: 1
+          ingredientField: 3
         };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e){
+      e.preventDefault();
       this.setState({
         inputValue: e.target.value
       });
     }
-    handleSubmit(){
-      this.props.addItem(this.state.inputValue);
+    handleSubmit(e){
+      e.preventDefault();
+      console.log(this.state)
     }
-    increaseCount = () => {
-        let count = this.state.count + 1;
+    increaseingredientField = () => {
+        let ingredientField = this.state.ingredientField + 1;
+        this.setState({
+            ingredientField
+        });
+        console.log(this.state.ingredientField)
+    }
+
+    decreaseingredientField = () => {
+        let ingredientField = this.state.ingredientField - 1;
 
         this.setState({
-            count
+            ingredientField
         });
-        console.log(this.state.count)
-    }
-
-    decreaseCount = () => {
-        let count = this.state.count - 1;
-
-        this.setState({
-            count
-        });
-        console.log(this.state.count)
+        console.log(this.state.ingredientField)
     }
     render() {
       return (
@@ -65,8 +66,14 @@ class CreateForm extends Component {
                     name="instructions"
                     placeholder="Instructions"
                     />
-                <CreateItem/>
-                <button onClick={this.handleSubmit} className="Create-Button">
+                <ul className="IngredientModifierButtons">
+                  <button className="button buttonMinus" onClick={this.decreaseingredientField}> - </button>
+                  <button className="button buttonPlus" onClick={this.increaseingredientField}> + </button>
+                </ul>
+                <div className="ingredientList">
+                  <IngredientList counter={this.state.ingredientField}/>
+                </div>
+                <button className="Create-Button">
                     Add
                 </button>
             </form>
