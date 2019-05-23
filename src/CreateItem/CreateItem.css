@@ -5,3 +5,7 @@
 .ingredientAmt {
     width: 5%;
 }
+
+html {
+    height: 100%;
+}

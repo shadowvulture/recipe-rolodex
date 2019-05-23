@@ -48,7 +48,7 @@ class Show extends Component {
                 onClick={() => this.deleteRecipe(item._id)}>delete_forever</button></h3>
                  <NavLink to={`{/id/${item._id}`}>
                 <div className="recipeCard">
-                    <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
+                    <img src={item.Thumbnail} alt="foot" className="recipeImage"></img>
                     <div className="recipeText">
                         <p className="boldText">Cook Time: </p>
                         <p><span class="emoji">⏱</span>{item.Cooktime}</p>
