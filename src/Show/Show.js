@@ -6,9 +6,9 @@ import Axios from 'axios';
 class Show extends Component {
     constructor (props) {
         super (props);
-        this.state = {
-            recipes: []
-        }
+        // this.state = {
+        //     recipes: []
+        // }
         
     }
 

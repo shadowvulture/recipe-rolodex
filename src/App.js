@@ -42,6 +42,7 @@ class App extends Component {
   }
 
   render() { 
+    console.log(this.state)
     return (
     <div className="App">
       <header className="App-header">
@@ -51,7 +52,7 @@ class App extends Component {
         <Switch>
           <Route exact path= "/" component={About} />
           <Route exact path="/api/recipe/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
-          <Route exact path={`/api/recipe/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps} {...this.state}/>}/>
+          <Route path={`/api/recipe/id/:${this.state.allRecipes._id}`} render= {(routerProps) => <Recipe refreshData={this.refreshData} {...this.state} {...routerProps}/>}/>
           <Route exact path="/api/recipe/new-recipe" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
       </main>
