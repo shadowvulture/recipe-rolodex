@@ -36,3 +36,19 @@
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+
+.navbar-container {
+    position: relative;
+}
+
+.create-new-recipe {
+    position: absolute;
+    right: 3%;
+    top: 35%;
+}
+
+.show-all-recipes{
+    position: absolute;
+    right: 20%;
+    top: 35%;
+}

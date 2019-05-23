@@ -1,6 +1,11 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
   body {
-      background-color: #011C13;
+      /* background: #9ee6e7; */
+      background: linear-gradient(to bottom right, #d2e8e9, #8bd7d8, rgb(23, 162, 167) )
   }
 .topRow {
     display: flex;
@@ -10,11 +15,12 @@
 }
 .recipeContainer {
     
-    width: 55vw;
+    width: 60vw;
     height: 300px;
     background-color: #4CBABD;
-    margin: 20px auto;
-    /* padding-top: 20px; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
     text-align: center;
     color: black;
     font-family: 'Dancing Script', cursive;
@@ -52,4 +58,8 @@
     font-weight: bold;
     font-size: 20px;
 
+}
+
+.trash-button{
+    
 }
