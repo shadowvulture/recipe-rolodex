@@ -46,7 +46,7 @@ class Show extends Component {
                 name='_id'
                 value={item._id}
                 onClick={() => this.deleteRecipe(item._id)}>delete_forever</button></h3>
-           
+                 <NavLink to={`{/id/${item._id}`}>
                 <div className="recipeCard">
                     <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
                     <div className="recipeText">
@@ -56,7 +56,8 @@ class Show extends Component {
                         <p>{item.Instructions}</p>
                     </div>
                 </div>
-           </div>     
+                </NavLink> 
+           </div>    
           
             
            )
