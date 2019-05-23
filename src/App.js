@@ -136,6 +136,9 @@ class App extends Component {
                 )
               }}
             />
+          <Route exact path="/api/recipe/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
+          <Route exact path={`/api/recipe/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps} {...this.state}/>}/>
+          <Route exact path="/api/recipe/new-recipe" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
       </main>
     </div>

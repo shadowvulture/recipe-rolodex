@@ -76,3 +76,4 @@ export default NavBar
 //     navBarItems.push(<NavItem key={3} href='/signup'>Sign Up</NavItem>)
 //     navBarItems.push(<NavItem key={4} href='/login'>Log In</NavItem>)
 // }
+
