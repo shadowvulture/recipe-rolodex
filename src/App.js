@@ -72,7 +72,8 @@ class App extends Component {
 
   handleSignUp = ( e ) => {
     e.preventDefault()
-    axios.post( 'http://localhost:3001/users/register', {
+    axios.post( 'https://reactreciperolodex.herokuapp.com/api/user/register', {
+      name: this.state.name,
       email: this.state.email,
       password: this.state.password
     } )
