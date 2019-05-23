@@ -30,7 +30,7 @@ class App extends Component {
       this.setState({
         allRecipes: res.data
       }, () => {
-        console.log('after', this.state)
+        // console.log('after', this.state)
       })
     })
     .catch((err) => {
@@ -61,9 +61,11 @@ class App extends Component {
         email: this.state.email,
         password: this.state.password
       })
-        .then(response => {
-            localStorage.token = response.data.token
-            this.setState({
+      .then( response =>
+      {
+          console.log(response)
+        localStorage.token = response.data
+        this.setState( {
               isLoggedIn: true
             })
         })
@@ -79,9 +81,10 @@ class App extends Component {
     } )
       .then( response =>
       {
-        localStorage.token = response.data.token
+        console.log(response.data)
+        localStorage.setItem( 'token', response.data.data )
         this.setState( {
-          isLoggedIn: true
+          // isLoggedIn: true
         } )
       } )
       .catch( err => console.log( err ) )
@@ -96,7 +99,7 @@ class App extends Component {
     this.setState({
       email: '',
       password: '',
-      isLoggedIn: true
+      isLoggedIn: false
     })
     localStorage.clear()
   }
@@ -137,7 +140,7 @@ class App extends Component {
               }}
             />
           <Route exact path="/api/recipe/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
-          <Route exact path={`/api/recipe/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps} {...this.state}/>}/>
+          {/* <Route exact path={`/api/recipe/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps} {...this.state}/>}/> */}
           <Route exact path="/api/recipe/new-recipe" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
       </main>
