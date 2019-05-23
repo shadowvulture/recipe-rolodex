@@ -41,7 +41,7 @@ class Show extends Component {
             return (
                
            <div className="recipeContainer">
-           <h3>{item.Title}<button class="material-icons trash-button" 
+           <h3 className="recipe-title">{item.Title}<button class="material-icons trash-button" 
                 type='submit'
                 name='_id'
                 value={item._id}
@@ -51,7 +51,7 @@ class Show extends Component {
                     <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
                     <div className="recipeText">
                         <p className="boldText">Cook Time: </p>
-                        <p>{item.Cooktime}</p>
+                        <p><span class="emoji">⏱</span>{item.Cooktime}</p>
                         <p className ="boldText">Instructions: </p>
                         <p>{item.Instructions}</p>
                     </div>

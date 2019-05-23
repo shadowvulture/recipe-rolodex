@@ -42,13 +42,11 @@
 }
 
 .create-new-recipe {
-    position: absolute;
-    right: 3%;
-    top: 35%;
+    align-self: flex-end;
+    
 }
 
 .show-all-recipes{
-    position: absolute;
-    right: 20%;
-    top: 35%;
+    align-self: flex-end;
+   overflow: hidden;
 }
