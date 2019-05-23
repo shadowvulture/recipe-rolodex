@@ -41,11 +41,14 @@ class Show extends Component {
             return (
                
            <div className="recipeContainer">
-           <h3 className="recipe-title">{item.Title}<button class="material-icons trash-button" 
+               <button class="material-icons trash-button" 
                 type='submit'
                 name='_id'
                 value={item._id}
-                onClick={() => this.deleteRecipe(item._id)}>delete_forever</button></h3>
+                onClick={() => this.deleteRecipe(item._id)}>delete_forever</button>
+           <h3 className="recipe-title">{item.Title} 
+           <br />
+           </h3>
            
                 <div className="recipeCard">
                     <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
