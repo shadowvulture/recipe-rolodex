@@ -1,4 +1,4 @@
-.navbar {
+ .navbar {
     position: fixed;
     left: 0;
     top: 0;
@@ -36,3 +36,13 @@
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+
+
+.nav {
+    background: green;
+    padding: 0 2% 0 2%;
+}
+
+#nav-mobile {
+    display: none
+}

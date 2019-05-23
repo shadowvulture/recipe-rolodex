@@ -3,19 +3,24 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch} from 'react-router-dom';
 import axios from 'axios'
-import Navbar from './Navbar/Navbar';
+import NavBar from './NavBar/NavBar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
-import Recipe from './Recipe/Recipe'
+// import Recipe from './Recipe/Recipe'
+import SignUpForm from './AuthenticateUser/SignUpForm'
+import LogOut from './AuthenticateUser/LogOut'
+import LogInForm from './AuthenticateUser/LogInForm'
 
 class App extends Component {
-  constructor (props) { 
+  constructor (props) {
     super (props)
     this.state = {
-      allRecipes: []
+      allRecipes: [],
+      email: '',
+      password: '',
+      isLoggedIn: false
     }
-    this.componentDidMount = this.componentDidMount.bind(this)
   }
 
   refreshData = () => {
@@ -35,29 +40,107 @@ class App extends Component {
 
   }
 
-
-  componentDidMount () {
+  componentDidMount = () => {
     this.refreshData()
       // console.log('before', this.state)
+      if (localStorage.token) {
+        this.setState({
+          isLoggedIn: true,
+        })
+      } else {
+        this.setState({
+          isLoggedIn: false
+        })
+      }
   }
 
-  render() { 
+  //  Logic interpreted from walk-it-out-front-end
+  handleLogIn = (e) => {
+    e.preventDefault()
+    axios.post('https://reactreciperolodex.herokuapp.com/api/user/login', {
+        email: this.state.email,
+        password: this.state.password
+      })
+        .then(response => {
+            localStorage.token = response.data.token
+            this.setState({
+              isLoggedIn: true
+            })
+        })
+        .catch(err => console.log(err))
+  }
+
+  handleSignUp = ( e ) => {
+    e.preventDefault()
+    axios.post( 'http://localhost:3001/users/register', {
+      email: this.state.email,
+      password: this.state.password
+    } )
+      .then( response =>
+      {
+        localStorage.token = response.data.token
+        this.setState( {
+          isLoggedIn: true
+        } )
+      } )
+      .catch( err => console.log( err ) )
+  }
+
+  handleInput = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+  }
+  handleLogOut = () => {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: true
+    })
+    localStorage.clear()
+  }
+
+
+
+  render() {
     return (
     <div className="App">
       <header className="App-header">
-          <Navbar/>
-      </header>
+          <NavBar isLoggedIn={this.state.isLoggedIn} />
+        </header>
       <main>
         <Switch>
           <Route exact path= "/" component={About} />
           <Route exact path="/api/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
-          <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/>
-          <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
+          {/* <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/> */}
+            <Route exact path="/api/recipes/new-recipe" render={( routerProps ) => <CreateForm {...routerProps} />} />
+            <Route path="/signup"
+              render={(props) => {
+                return(
+                  <SignUpForm isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
+                )
+              }}
+            />
+            <Route path="/logout"
+              render={(props) => {
+                return(
+                  <LogOut isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
+                )
+              }}
+            />
+            <Route path="/login"
+              render={(props) => {
+                return(
+                  <LogInForm isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />
+                )
+              }}
+            />
         </Switch>
       </main>
     </div>
   );
 }
   }
+
 
 export default App;
