@@ -50,9 +50,9 @@ class App extends Component {
       <main>
         <Switch>
           <Route exact path= "/" component={About} />
-          <Route exact path="/api/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
-          <Route exact path={`/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps}/>}/>
-          <Route exact path="/recipes/create" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
+          <Route exact path="/api/recipe/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
+          <Route exact path={`/api/recipe/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps}/>}/>
+          <Route exact path="/api/recipe/new-recipe" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
       </main>
     </div>

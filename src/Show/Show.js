@@ -49,7 +49,6 @@ class Show extends Component {
            <h3 className="recipe-title">{item.Title} 
            <br />
            </h3>
-                onClick={() => this.deleteRecipe(item._id)}>delete_forever</button></h3>
                  <NavLink to={`{/id/${item._id}`}>
 
                 <div className="recipeCard">
