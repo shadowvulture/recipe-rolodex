@@ -38,11 +38,19 @@
 .material-icons.md-48 { font-size: 48px; }
 
 
-.nav {
-    background: green;
-    padding: 0 2% 0 2%;
-}
-
 #nav-mobile {
     display: none
+}
+.navbar-container {
+    position: relative;
+}
+
+.create-new-recipe {
+    justify-content: flex-end;
+    
+}
+
+.show-all-recipes{
+    justify-content: flex-end;
+    overflow: hidden;
 }
