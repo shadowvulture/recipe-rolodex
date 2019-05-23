@@ -40,6 +40,23 @@
     font-family: 'Dancing Script', cursive;
 }
 
+.about-text {
+    width: 45vw;
+    color:hsl(210, 11%, 15%);
+    font-family: Roboto, sans-serif;
+    display: flex;
+    line-height: 24px;
+    margin: 0px 0px 16px;
+    text-align: center;
+    justify-content: right;
+    margin-left: 28%;
+}
+
+.about-text p {
+    align-items: center;
+    
+}
+
 @media only screen and (max-width: 780px) {
     .largeLogo h1 {
         font-size: 5rem;
