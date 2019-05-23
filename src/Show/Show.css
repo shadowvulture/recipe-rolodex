@@ -38,6 +38,8 @@
 
 .trash-button{
     align-self: flex-start;
+    color: #4CBABD;
+    background: #011C13;
 }
 
 .recipeCard {
