@@ -88,9 +88,25 @@ class Recipe extends Component {
                     <div className="recipeText" id="recipeText">
                         <p className="boldText">Ingredients: </p>
                         <p>
-                        <ul>
+                        <ul className="ul">
                         {listIngredients}
                         </ul>
+                        </p>
+                
+                    </div>
+                </div>
+                
+           </div>
+
+           {/* INSTRUCTIONS CARD */}
+           <div className="recipeContainer" id="recipeContainerBot">
+           <br />
+          
+                <div className="recipeCard" id="recipeCard">
+                    <div className="recipeText" id="recipeText">
+                        <p className="boldText" id="instructions">Instructions: </p>
+                        <p>{thisRecipe[0].Instructions}
+                        
                         </p>
                 
                     </div>

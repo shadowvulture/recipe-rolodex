@@ -32,6 +32,7 @@
 }
 #recipeContainerBot {
     margin-top: 0px;
+    margin-bottom: 0px;
     background-color: #4CBABD;
 }
 #recipeCard {
@@ -39,4 +40,25 @@ background-color: #E3D2C7;
 }
 #recipeText {
 
+}
+.ul {
+    list-style-type: disc;
+    columns: 2;
+    list-style-position: outside;
+    text-align: left;
+    justify-content: center;
+   margin: 0 0 0 120px ;
+   
+    /* display: flex;
+    flex-direction: row; */
+}
+li {
+    margin-right: 75px;
+}
+#recipeContainerBot2 {
+    margin-top: 0px;
+    background-color: #4CBABD;
+}
+#instructions {
+   
 }
