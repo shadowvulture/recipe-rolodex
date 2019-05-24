@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch} from 'react-router-dom';
 import axios from 'axios'
-import Navbar from './Navbar/Navbar';
+import NavBar from './NavBar/NavBar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
-import Recipe from './Recipe/Recipe'
+// import Recipe from './Recipe/Recipe'
 
 class App extends Component {
   constructor (props) {
@@ -45,7 +45,7 @@ class App extends Component {
     return (
     <div className="App">
       <header className="App-header">
-          <Navbar/>
+          <NavBar/>
       </header>
       <main>
         <Switch>
