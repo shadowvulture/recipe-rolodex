@@ -6,23 +6,23 @@ class CreateForm extends Component {
     constructor(props){
       super(props);
       this.state = {
-          inputValue: '',
           ingredientField: 3
         };
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(e){
-      e.preventDefault();
-      this.setState({
-        inputValue: e.target.value
-      });
+    handleChange = evt => {
+      this.setState({ [evt.target.name]: evt.target.value })
     }
-    handleSubmit(e){
-      e.preventDefault();
+
+    handleSubmit = evt => {
+      evt.preventDefault()
       console.log(this.state)
+
+      this.props.newRecipe(this.state)
     }
-    increaseingredientField = () => {
+  increaseingredientField = ( evt ) =>
+  {
+    evt.preventDefault()
+
         let ingredientField = this.state.ingredientField + 1;
         this.setState({
             ingredientField
@@ -30,7 +30,10 @@ class CreateForm extends Component {
         console.log(this.state.ingredientField)
     }
 
-    decreaseingredientField = () => {
+  decreaseingredientField = ( evt ) =>
+  {
+    evt.preventDefault()
+
         let ingredientField = this.state.ingredientField - 1;
 
         this.setState({
@@ -43,27 +46,37 @@ class CreateForm extends Component {
             <div className="Create">
             <h2>Add a New Recipe</h2>
             <form className="Create-Form" onSubmit={this.handleSubmit}>
-                <input 
-                    className="Create-Input" 
-                    type="text" name="title"
-                    placeholder="Recipe Name"
-                />
-                <input 
-                    className="Create-Input" 
-                    type="text" 
-                    name="thumbnail"
+                <input
+                    className="Create-Input"
+                    type="text"
+                    name="Title"
+              value={this.state.value}
+              onChange={this.handleChange}
+
+              placeholder="Recipe Name"
+              />
+                <input
+                    className="Create-Input"
+                    type="text"
+                    name="Thumbnail"
+                    value={this.state.value}
+                    onChange={this.handleChange}
                     placeholder="Recipe Image URL"
                     />
-                <input 
-                    className="Create-Input" 
-                    type="text" 
-                    name="cooktime"
+                <input
+                    className="Create-Input"
+                    type="text"
+                    name="Cooktime"
+                    value={this.state.value}
+                    onChange={this.handleChange}
                     placeholder="Estimated Cooking Time"
                     />
-                <input 
-                    className="Create-Input" 
-                    type="text" 
-                    name="instructions"
+                <input
+                    className="Create-Input"
+                    type="text-area"
+                    name="Instructions"
+                    value={this.state.value}
+                    onChange={this.handleChange}
                     placeholder="Instructions"
                     />
                 <ul className="IngredientModifierButtons">
@@ -73,13 +86,13 @@ class CreateForm extends Component {
                 <div className="ingredientList">
                   <IngredientList counter={this.state.ingredientField}/>
                 </div>
-                <button className="Create-Button">
+                <button className="Create-Button" type='submit'>
                     Add
                 </button>
             </form>
         </div>
         );
+      }
     }
-  }
 
 export default CreateForm;

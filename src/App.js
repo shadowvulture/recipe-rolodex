@@ -7,6 +7,7 @@ import NavBar from './NavBar/NavBar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
+
 import Recipe from './Recipe/Recipe'
 import SignUpForm from './AuthenticateUser/SignUpForm'
 import LogOut from './AuthenticateUser/LogOut'
@@ -21,6 +22,12 @@ class App extends Component {
       password: '',
       isLoggedIn: false
     }
+  }
+
+  newRecipe (input) {
+    axios.post('https://reactreciperolodex.herokuapp.com/api/recipe/new-recipe', input).then(res => {
+      console.log(res)
+    })
   }
 
   refreshData = () => {
@@ -103,7 +110,6 @@ class App extends Component {
     })
     localStorage.clear()
   }
-
 
 
 
