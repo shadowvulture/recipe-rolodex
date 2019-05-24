@@ -5,7 +5,8 @@ import Axios from 'axios';
 
 class Show extends Component {
     constructor (props) {
-        super (props);
+        super( props );
+        console.log(this)
         this.state = {
             recipes: []
         }

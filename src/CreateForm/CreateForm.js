@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './CreateForm.css';
 import IngredientList from './IngredientList';
+import axios from 'axios'
 
 class CreateForm extends Component {
     constructor(props){
-      super(props);
+      super( props );
+      console.log(props, this.props)
       this.state = {
           ingredientField: 3
         };
@@ -12,12 +14,16 @@ class CreateForm extends Component {
     handleChange = evt => {
       this.setState({ [evt.target.name]: evt.target.value })
     }
-
+    newRecipe = (input) => {
+      axios.post('https://reactreciperolodex.herokuapp.com/api/recipe/new-recipe', input).then(res => {
+        console.log(res)
+      })
+    }
     handleSubmit = evt => {
       evt.preventDefault()
       console.log(this.state)
-
-      this.props.newRecipe(this.state)
+      console.log(this.props)
+      this.newRecipe(this.state)
     }
   increaseingredientField = ( evt ) =>
   {

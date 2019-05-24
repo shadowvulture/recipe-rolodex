@@ -8,7 +8,7 @@ import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
 
-import Recipe from './Recipe/Recipe'
+// import Recipe from './Recipe/Recipe'
 import SignUpForm from './AuthenticateUser/SignUpForm'
 import LogOut from './AuthenticateUser/LogOut'
 import LogInForm from './AuthenticateUser/LogInForm'
@@ -24,7 +24,7 @@ class App extends Component {
     }
   }
 
-  newRecipe (input) {
+  newRecipe = (input) => {
     axios.post('https://reactreciperolodex.herokuapp.com/api/recipe/new-recipe', input).then(res => {
       console.log(res)
     })
@@ -113,7 +113,10 @@ class App extends Component {
 
 
 
-  render() {
+  render ()
+  {
+    // const createFormMarkUp = <CreateForm {...this.state} newRecipe={this.newRecipe} />
+    console.log(this)
     return (
     <div className="App">
       <header className="App-header">
@@ -124,7 +127,7 @@ class App extends Component {
           <Route exact path= "/" component={About} />
           <Route exact path="/api/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
           {/* <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/> */}
-            <Route exact path="/api/recipes/new-recipe" render={( routerProps ) => <CreateForm {...routerProps} />} />
+            {/* <Route exact path="/api/recipe/new-recipe" render={( routerProps ) => <CreateForm {...routerProps} />} /> */}
             <Route path="/signup"
               render={(props) => {
                 return(
@@ -146,10 +149,10 @@ class App extends Component {
                 )
               }}
             />
-          <Route exact path="/api/recipe/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
-          <Route path={`/api/recipe/id/:${this.state.allRecipes._id}`} render= {(routerProps) => <Recipe refreshData={this.refreshData} {...this.state} {...routerProps}/>}/>
-          <Route exact path="/api/recipe/new-recipe" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
-        </Switch>
+          <Route exact path="/api/recipes/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
+          {/* <Route path={`/api/recipe/id/:${this.state.allRecipes._id}`} render= {(routerProps) => <Recipe refreshData={this.refreshData} {...this.state} {...routerProps}/>}/> */}
+          <Route exact path="/api/recipes/new-recipe" render={( routerProps ) => <CreateForm {...this.state} newRecipe={this.newRecipe} />} />
+          </Switch>
       </main>
     </div>
   );
