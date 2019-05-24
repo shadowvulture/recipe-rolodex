@@ -26,9 +26,9 @@
     font-family: 'Dancing Script', cursive;
     border-radius: 35px;
     overflow: hidden;
-    box-shadow: 0 30px 80px 10px rgba(0,0,0,.2);
     display: flex;
     align-items: center;
+    box-shadow: 5px 5px rgb(1, 28, 19, .6);
     
 }
 .recipe-title {
@@ -50,7 +50,7 @@
     padding-top: 0px;
     width: 98%;
     height: 84%;
-    margin: 0 auto;
+    margin: 0 0 0 0;
     background-color: #E3D2C7;
     display: flex;
     flex-direction: row;
@@ -71,8 +71,10 @@
    display: block;
 }
 .recipeText {
-    margin: auto;
-   
+    /* margin: auto; */
+    text-align: left;
+    padding-left: 10px;
+   font-size: 14px;
     color: #011C13;
     font-family: 'Dancing Script', cursive;
 }

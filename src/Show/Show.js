@@ -59,7 +59,7 @@ class Show extends Component {
            <h3 className="recipe-title">{item.Title}
            <br />
            </h3>
-                 <NavLink to={`/api/recipe/id/${item._id}`}>
+                    <NavLink to={`/api/recipe/id/${item._id}`}>
 
                 <div className="recipeCard">
                     <img src={item.Thumbnail} alt="foot" className="recipeImage"></img>
