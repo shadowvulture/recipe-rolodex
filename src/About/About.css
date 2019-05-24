@@ -13,28 +13,11 @@
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
   }
-  
-.about-page {
-    position: relative;
-}
-.about {
-    margin: 15px 25vw 0 25vw;
-    width: 600px;
-    text-align: center;
-    color: #0068C5;
-    background-color: #A5D1F4;
-}
-.mainLogo {
-    width: 600px;
-    height: 150px;
-    margin: 150px 25vw 0 25vw;
-    background-color: royalblue;
-}
 
 .largeLogo h1 {
     position: absolute;
     top: 49%;
-    left: 24%;
+    left: 28%;
     padding: 0;
     font-size: 7rem;
     font-family: 'Dancing Script', cursive;
