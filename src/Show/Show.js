@@ -1,40 +1,80 @@
 import React, { Component } from 'react'
 import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import './Show.css';
+import Axios from 'axios';
 
 class Show extends Component {
     constructor (props) {
         super (props);
-        
-        
+        this.state = {
+            recipes: []
+        }
+
+    }
+
+
+    deleteRecipe = id =>
+    {
+        console.log(localStorage)
+        console.log( localStorage.token )
+        console.log(id)
+    // console.log(`${this.props.allRecipes.filter(id => id)} allRecipes`)
+    let newUrl = 'https://reactreciperolodex.herokuapp.com/api/recipe/delete/' + id
+    // console.log(newUrl)
+        Axios.delete( newUrl,
+        {
+            headers: {
+                'auth-token': localStorage.token
+            }
+        }).then( res =>
+        {
+        console.log(localStorage)
+        console.log(res)
+        console.log(res.data)
+        this.props.refreshData()
+
+    })
+
     }
     render() {
-    
+
         console.log(this.props.allRecipes)
         if (this.props.allRecipes.length > 0) {
         return (
             <div>
             <div className = "background2">
             <div className="topRow">
-                
+
             {this.props.allRecipes.map((item => {
-    
+
             return (
-               
+
            <div className="recipeContainer">
-           <h3>{item.Title}</h3>
+               <button class="material-icons trash-button"
+                type='submit'
+                name='_id'
+                value={item._id}
+                onClick={() => this.deleteRecipe(item._id)}>delete_forever</button>
+           <h3 className="recipe-title">{item.Title}
+           <br />
+           </h3>
+                 <NavLink to={`/api/recipe/id/${item._id}`}>
+
                 <div className="recipeCard">
-           <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
-           <div className="recipeText">
-               <p>Cooketime: {item.Cooktime}</p>
-               <p>Instructions: {item.Instructions}</p>
-               </div>
+                    <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
+                    <div className="recipeText">
+                        <p className="boldText">Cook Time: </p>
+                        <p><span class="emoji">⏱</span>{item.Cooktime}</p>
+                        <p className ="boldText">Instructions: </p>
+                        <p>{item.Instructions}</p>
+                    </div>
                 </div>
-           </div>     
-          
-            
+                </NavLink>
+           </div>
+
+
            )
-          }))}   
+          }))}
 
             </div>
             </div>
@@ -52,9 +92,9 @@ class Show extends Component {
 //         console.log(this.props.allRecipes[0])
 //         if (this.props.allRecipes.length > 0) {
 //         console.log(this.props.allRecipes)
-       
+
 //         return(
-            
+
 
 //             <div className="topRow">
 //                 <div className ="recipeContainer">
@@ -70,10 +110,10 @@ class Show extends Component {
 //             </div>
 //         )
 //         }
-        
+
 //     return (
 //         <div>
-            
+
 //             <div className ="topRow">
 //                 <div className ="recipeContainer">
 //                     <h3>Recipe Title</h3>
@@ -98,13 +138,13 @@ class Show extends Component {
 //                             Link to recipe page
 //                         </div>
 //                     </div>
-//                 </div>  
+//                 </div>
 //             </div>
 //         </div>
 //     );
-        
+
 // };
- 
+
 // }
 
 export default Show;

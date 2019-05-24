@@ -1,3 +1,11 @@
 .App {
   width: 100vw;
+  min-height: 100vh;
 }
+
+
+.body {
+  margin: 3%;
+  text-align: center;
+}
+
