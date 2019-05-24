@@ -5,7 +5,7 @@ import './SignUpForm.css'
 class SignUpForm extends Component {
     render() {
         return (
-            <div>
+            <div class="white-form">
                 <h2>Sign Up</h2>
                 <form>
                     <div>

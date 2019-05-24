@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 class LogOut extends Component {
     render() {
         return(
-            <div>
+            <div class="white-form">
                 <h2>Log Out</h2>
 
                 <form>

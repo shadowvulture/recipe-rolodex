@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 class LogInForm extends Component {
     render() {
         return (
-            <div>
+            <div class="white-form">
                 <h2>Log In</h2>
 
                 <form>
@@ -14,7 +14,7 @@ class LogInForm extends Component {
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" onChange={this.props.handleInput} />
+                        <input class="instructions" type="password" name="password" onChange={this.props.handleInput} />
                     </div>
                     <input value="Submit" type="submit" onClick={this.props.handleLogIn} />
                 </form>
