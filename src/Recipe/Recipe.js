@@ -74,8 +74,8 @@ class Recipe extends Component {
                     <div className="recipeText">
                         <p className="boldText">Cook Time: </p>
                         <p><span class="emoji">⏱</span>{thisRecipe[0].Cooktime}</p>
-                        <p className ="boldText">Instructions: </p>
-                        <p>{thisRecipe[0].Instructions}</p>
+                     
+                   
                     </div>
                 </div>
                 
@@ -105,7 +105,7 @@ class Recipe extends Component {
                 <div className="recipeCard" id="recipeCard">
                     <div className="recipeText" id="recipeText">
                         <p className="boldText" id="instructions">Instructions: </p>
-                        <p>{thisRecipe[0].Instructions}
+                        <p className ="instructionsText">{thisRecipe[0].Instructions}
                         
                         </p>
                 
