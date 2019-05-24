@@ -50,7 +50,6 @@ class CreateForm extends Component {
     render() {
       return (
             <div className="Create">
-            <h2>Add a New Recipe</h2>
             <form className="Create-Form" onSubmit={this.handleSubmit}>
                 <input
                     className="Create-Input"
@@ -78,7 +77,7 @@ class CreateForm extends Component {
                     placeholder="Estimated Cooking Time"
                     />
                 <input
-                    className="Create-Input"
+                    className="Create-Input instructions"
                     type="text-area"
                     name="Instructions"
                     value={this.state.value}
@@ -89,7 +88,7 @@ class CreateForm extends Component {
                   <button className="button buttonMinus" onClick={this.decreaseingredientField}> - </button>
                   <button className="button buttonPlus" onClick={this.increaseingredientField}> + </button>
                 </ul>
-                <div className="ingredientList">
+                <div className="Create-Input ingredientList">
                   <IngredientList counter={this.state.ingredientField}/>
                 </div>
                 <button className="Create-Button" type='submit'>

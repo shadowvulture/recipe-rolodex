@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Show.css';
 import Axios from 'axios';
 
@@ -62,7 +62,7 @@ class Show extends Component {
                  <NavLink to={`/api/recipe/id/${item._id}`}>
 
                 <div className="recipeCard">
-                    <img src={item.Thumbnail} alt="foot image" className="recipeImage"></img>
+                    <img src={item.Thumbnail} alt="foot" className="recipeImage"></img>
                     <div className="recipeText">
                         <p className="boldText">Cook Time: </p>
                         <p><span class="emoji">⏱</span>{item.Cooktime}</p>
