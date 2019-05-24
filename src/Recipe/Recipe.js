@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Recipe.css';
 import Axios from 'axios'
 
+
 class Recipe extends Component {
     constructor (props) {
         super(props)
@@ -35,15 +36,26 @@ class Recipe extends Component {
     })
     }
 
+
     render() {
-        
+  let ingredients = [];
+  let ingredient;
         console.log(this.props)
         let thisRecipe;
         if (this.props.allRecipes.length > 0) {
-            console.log(this.props.allRecipes)
+        
              thisRecipe = this.props.allRecipes.filter((item) => item._id === this.props.match.params.id)
-            console.log(thisRecipe[0].Title)
-            
+
+            for (let i = 0; i < thisRecipe[0].Ingredients.FoodType.length; i++) {
+                console.log(thisRecipe[0].Ingredients.FoodType[i])
+                ingredients.push(thisRecipe[0].Ingredients.FoodType[i] + " " + thisRecipe[0].Ingredients.FoodAmount[i])
+                // for (let z = 0; z < thisRecipe[0].Ingredients.FoodAmount.length; z++) {
+                //     console.log(thisRecipe[0].Ingredients.FoodAmount[z])
+                //             }
+                        }
+
+                        
+    const listIngredients = ingredients.map((ingredient) => <li>{ingredient}</li>)
             return (
                 /* FRONT OF RECIPE CARD */
                 <div>
@@ -56,6 +68,7 @@ class Recipe extends Component {
            <h3 className="recipe-title">{thisRecipe[0].Title}
            <br />
            </h3>
+         
                 <div className="recipeCard">
                     <img src={thisRecipe[0].Thumbnail} alt="foot image" className="recipeImage"></img>
                     <div className="recipeText">
@@ -74,9 +87,12 @@ class Recipe extends Component {
                 <div className="recipeCard" id="recipeCard">
                     <div className="recipeText" id="recipeText">
                         <p className="boldText">Ingredients: </p>
-                        <p>{thisRecipe[0].Ingredients.FoodType}</p>
-                        <p className ="boldText">Ingredient Amounts: </p>
-                        <p>{thisRecipe[0].Ingredients.FoodAmount}</p>
+                        <p>
+                        <ul>
+                        {listIngredients}
+                        </ul>
+                        </p>
+                
                     </div>
                 </div>
                 
