@@ -13,7 +13,9 @@ class Show extends Component {
     }
 
 
-    deleteRecipe = id => {
+    deleteRecipe = id =>
+    {
+        console.log(localStorage)
         console.log( localStorage.token )
         console.log(id)
     // console.log(`${this.props.allRecipes.filter(id => id)} allRecipes`)
