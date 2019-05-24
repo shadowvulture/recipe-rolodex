@@ -18,7 +18,7 @@ class CreateItem extends Component {
                     value={this.state.value}
                     onChange={this.handleChange}
                     name='FoodAmount'
-                    placeholder="Amount and Measurement"
+                    placeholder="Amount (ex. 1/2 cup, 1 tsp)"
                 />
                 <input
                     className="Create-Input ingredientItem"
