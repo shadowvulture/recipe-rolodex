@@ -57,6 +57,12 @@
     border-radius: 35px;
     
 }
+
+.recipeCard:hover{
+    text-decoration: underline;
+    -webkit-text-decoration-color: #4CBABD; /* safari still uses vendor prefix */
+    text-decoration-color: #4CBABD;
+}
 .recipeImage {
    margin: 0px 0 0px 0px;
    width: 252px;
