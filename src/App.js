@@ -7,7 +7,7 @@ import NavBar from './NavBar/NavBar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
-// import Recipe from './Recipe/Recipe'
+import Recipe from './Recipe/Recipe'
 import SignUpForm from './AuthenticateUser/SignUpForm'
 import LogOut from './AuthenticateUser/LogOut'
 import LogInForm from './AuthenticateUser/LogInForm'
@@ -106,6 +106,7 @@ class App extends Component {
 
 
 
+
   render() {
     return (
     <div className="App">
@@ -140,7 +141,7 @@ class App extends Component {
               }}
             />
           <Route exact path="/api/recipe/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
-          {/* <Route exact path={`/api/recipe/id/${this.state._id}`} render= {(routerProps) => <Recipe {...routerProps} {...this.state}/>}/> */}
+          <Route path={`/api/recipe/id/:${this.state.allRecipes._id}`} render= {(routerProps) => <Recipe refreshData={this.refreshData} {...this.state} {...routerProps}/>}/>
           <Route exact path="/api/recipe/new-recipe" render= {(routerProps) => <CreateForm {...routerProps}/>}/>
         </Switch>
       </main>
