@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Recipe.css';
 import Axios from 'axios'
-
+import { NavLink } from 'react-router-dom';
 
 class Recipe extends Component {
     constructor (props) {
@@ -33,6 +33,7 @@ class Recipe extends Component {
         console.log(res)
         console.log(res.data)
         this.props.refreshData()
+      
     })
     }
 
@@ -41,11 +42,12 @@ class Recipe extends Component {
   let ingredients = [];
   let ingredient;
         console.log(this.props)
+        
         let thisRecipe;
         if (this.props.allRecipes.length > 0) {
         
              thisRecipe = this.props.allRecipes.filter((item) => item._id === this.props.match.params.id)
-
+             console.log(this.props.match.params.id)
             for (let i = 0; i < thisRecipe[0].Ingredients.FoodType.length; i++) {
                 console.log(thisRecipe[0].Ingredients.FoodType[i])
                 ingredients.push(thisRecipe[0].Ingredients.FoodType[i] + " " + thisRecipe[0].Ingredients.FoodAmount[i])
@@ -82,6 +84,14 @@ class Recipe extends Component {
            </div>
         {/* BACK OF RECIPE CARD */}
         <div className="recipeContainer" id="recipeContainerBot">
+           
+        <NavLink to={'/api/recipe/update/${item._id}'}>
+                <button className="update" id="update"
+                    type='submit'
+                    name='_id'
+                    value={thisRecipe[0]._id}> Update
+                </button>
+            </NavLink>
            <br />
           
                 <div className="recipeCard" id="recipeCard">
