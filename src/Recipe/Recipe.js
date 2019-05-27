@@ -85,7 +85,7 @@ class Recipe extends Component {
         {/* BACK OF RECIPE CARD */}
         <div className="recipeContainer" id="recipeContainerBot">
            
-        <NavLink to={'/api/recipe/update/${item._id}'}>
+        <NavLink to={`/api/recipe/update/${thisRecipe[0]._id}`}>
                 <button className="update" id="update"
                     type='submit'
                     name='_id'
