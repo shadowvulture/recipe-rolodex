@@ -1,3 +1,12 @@
 .ingredientsInput {
     margin: 100px auto;
 } 
+.recipeDiv {
+    margin: 35vh 0 0 10vw;
+}
+input {
+    width: 300px;
+}
+.updateBtn {
+    margin: 10px 0 0 7vw;
+}
