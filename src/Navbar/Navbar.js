@@ -4,7 +4,7 @@ import './NavBar.css'
 class NavBar extends Component {
     render() {
         let navBarItems = [
-         <NavItem key={1} href='/'> <h1><i class="material-icons md-24">tab</i>Recipe Rolodex</h1></NavItem>,
+         <NavItem key={1} href='/'> <h1><i className="material-icons md-24">tab</i>Recipe Rolodex</h1></NavItem>,
             <NavItem key={2} href='/api/recipes'>Show All Recipes</NavItem>,
             <NavItem key={3} href='/api/recipes/new-recipe'>Create Recipe</NavItem>
     ]

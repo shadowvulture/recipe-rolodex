@@ -7,7 +7,7 @@ import NavBar from './NavBar/NavBar';
 import Show from './Show/Show';
 import About from './About/About';
 import CreateForm from './CreateForm/CreateForm';
-
+import Update from './Update/Update'
 import Recipe from './Recipe/Recipe'
 import SignUpForm from './AuthenticateUser/SignUpForm'
 import LogOut from './AuthenticateUser/LogOut'
@@ -128,6 +128,8 @@ class App extends Component {
           <Route exact path="/api/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
           {/* <Route exact path="/api/recipes/:recipeID" render= {(routerProps) => <Recipe {...routerProps}/>}/> */}
             {/* <Route exact path="/api/recipe/new-recipe" render={( routerProps ) => <CreateForm {...routerProps} />} /> */}
+            <Route exact path={`/api/recipe/update/:id`} render= {(routerProps) => <Update refreshData={this.refreshData} {...this.state} {...routerProps}/>}/>
+
             <Route path="/signup"
               render={(props) => {
                 return(
@@ -151,6 +153,7 @@ class App extends Component {
             />
           <Route exact path="/api/recipes/recipes" render={(routerProps) => <Show refreshData={this.refreshData} {...this.state} />} />
           <Route exact path={`/api/recipe/id/:id`} render= {(routerProps) => <Recipe refreshData={this.refreshData} {...this.state} {...routerProps}/>}/>
+          <Route exact path={`/api/recipe/update/:id`} render= {(routerProps) => <Update refreshData={this.refreshData} {...this.state} {...routerProps}/>}/>
           <Route exact path="/api/recipes/new-recipe" render={( routerProps ) => <CreateForm {...this.state} newRecipe={this.newRecipe} />} />
           </Switch>
       </main>
