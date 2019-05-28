@@ -25,7 +25,11 @@ class Update extends Component {
         .then((res) => {
           console.log(res)
           this.setState({
-            recipe: res.data[0]
+            recipe: res.data[0],
+            Title: res.data[0].Title,
+            Thumbnail: res.data[0].Thumbnail,
+            Cooktime: res.data[0].Cooktime,
+            Instructions: res.data[0].Instructions
           }, () => {
             console.log('after', this.state)
           })
@@ -69,7 +73,7 @@ class Update extends Component {
         let recipeDiv
         if (this.state && this.state.recipe) {
             recipeDiv = <div className="recipeDiv">
-               <form onSubmit={this.handleSubmit}>
+               <form onSubmit={this.updateRecipe}>
                 Recipe Name: <br />
                 <input name="Title" onChange={this.handleChange} placeholder={this.state.recipe.Title}></input> <br />
                 Recipe Image URL: <br />
