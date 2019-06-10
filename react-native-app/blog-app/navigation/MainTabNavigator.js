@@ -9,6 +9,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import BlogPostScreen from '../screens/BlogPostScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -55,9 +56,23 @@ SettingsStack.navigationOptions = {
     />
   ),
 };
+const BlogPostStack = createStackNavigator({
+  BlogPost: BlogPostScreen,
+});
+
+BlogPostStack.navigationOptions = {
+  tabBarLabel: 'BlogPost',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'store' : 'md-options'}
+    />
+  ),
+};
 
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  BlogPostStack
 });
