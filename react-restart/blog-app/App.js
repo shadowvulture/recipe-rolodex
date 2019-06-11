@@ -99,15 +99,31 @@ class DetailsScreen extends React.Component {
       console.log('eureka', this.props.navigation.state.params.article.title)
       return(
         <View>
+          <ScrollView>
+          <Text 
+              style={styles.blogTitle}>
+              {this.props.navigation.state.params.article.title}</Text>
+              {/* Author View */}
+              <View style = {{flex: 1, height: 50, flexDirection: 'row'}}>
+                  <View style = {{width: 60, marginLeft: 5}}>
+                  <Image style = {styles.authorPic}
+                    source={require('./assets/derek_circle.jpg')} />
+                    </View>
+                    <View 
+                    style = {styles.author} />
+                
+                <View style = {{width: 200, paddingTop: 15}}>
+                   
+                    <Text style={styles.blogAuthor}>
+                    By: {this.props.navigation.state.params.article.author}</Text>
+                    </View>
+                    </View>
+            
+
           <Image style ={styles.image}
               source = {{uri: this.props.navigation.state.params.article.urlToImage}} />
-          <Text 
-              style={styles.blog}>
-              {this.props.navigation.state.params.article.title}</Text>
-          <Image style = {styles.authorPic}
-              source={require('./assets/derek_circle.jpg')} />
-          <Text style={styles.blog}>
-              By: {this.props.navigation.state.params.article.author}</Text>
+          
+             
           <Text 
               style={styles.blogContent}>
               {blogData}</Text>        
@@ -123,6 +139,7 @@ class DetailsScreen extends React.Component {
             title="Go back"
             onPress={() => this.props.navigation.goBack()}
         />
+        </ScrollView>
         </View>
       )
     // } else {
@@ -174,6 +191,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
   },
+    blogTitle:{
+      fontSize: 24,
+      textAlign: 'center',
+      alignItems: 'center',
+      marginTop: 10
+    },
+    blogAuthor:{
+      fontSize: 14,
+      textAlign: 'left',
+      marginLeft: 10,
+    },
+    author:{
+      fontSize: 14,
+      textAlign: 'left',
+      marginLeft: 10,
+      marginTop: 10,
+      height: 50,
+      
+    },
   blogContent: {
     fontSize: 16,
     textAlign: 'center',
@@ -200,9 +236,9 @@ const styles = StyleSheet.create({
   
   },
   authorPic : {
-    width: 80,
-    height: 80,
-    marginTop: 10
+    width: 50,
+    height: 50,
+  
   }
 })
 console.log('details', this.props)
