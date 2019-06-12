@@ -17,8 +17,14 @@ componentDidMount () {
     axios.get('https://p4back.herokuapp.com/api/article')
       .then((res) => {
         // console.log(res)
+        data1 = res.data
+        data1.sort(function (a, b) {
+          return b._id.localeCompare(a._id);
+        });
+        console.log('sorted', data1)
         this.setState({
-          article: res.data
+          article: data1
+       
         }, () => {
           // console.log('after', this.state)
         })
