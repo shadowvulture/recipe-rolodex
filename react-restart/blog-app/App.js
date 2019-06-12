@@ -1,9 +1,11 @@
 import React from 'react';
+
 import { Button, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import axios from 'axios'
 import { Dimensions } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
+
 
 class HomeScreen extends React.Component {
   constructor () {
@@ -42,7 +44,7 @@ componentDidMount () {
       return (
   
         <View>
-          <ScrollView>
+          <ScrollView style = {{height: height * .82}}>
                   
               {this.state.article.map((post => {
       // const {navigate} = this.props.navigation;
@@ -68,6 +70,21 @@ componentDidMount () {
             )
             }))}   
                 </ScrollView>
+                {/* Below will be my makeshift tab bar */}
+                <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={styles.tabBar}>
+        <Image style = {styles.tabBarIcon}
+                    source={require('./assets/icons8-log-cabin-filled-50.png')} />
+                    </View>
+        <View style={styles.tabBar}>
+        <Image style = {styles.tabBarIcon}
+                    source={require('./assets/icons8-category-filled-50.png')} />
+                    </View>
+        <View style={styles.tabBar}>
+        <Image style = {styles.tabBarIcon}
+                    source={require('./assets/icons8-online-store-50.png')} />
+                    </View>
+      </View>
               </View>
       );
     } else {
@@ -192,6 +209,17 @@ const styles = StyleSheet.create({
       marginTop: 8,
       
   },
+  tabBarIcon: {
+    width: 40,
+    height: 40,
+    marginLeft: width * .11,
+    marginTop: height * .01
+},
+tabBar: {
+  width: width / 3, 
+  height: height * .20,
+  backgroundColor: '#38bbd8'
+},
   blog: {
     fontSize: 16,
     textAlign: 'center',
