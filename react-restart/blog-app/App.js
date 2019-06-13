@@ -135,7 +135,7 @@ class HomeScreen extends React.Component {
           <View style={styles.tabBar}>
           <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate("Categories", {
+                this.props.navigation.navigate("AboutUs", {
                   // article: this.props.prop2
                 })
               }
@@ -235,6 +235,7 @@ class DetailsScreen extends React.Component {
         
         })
       }/>
+      <Text style={{textAlign: 'center', fontSize: 24}}>Click to go back.</Text>
         
         </TouchableOpacity>
           {/* <Button
@@ -404,41 +405,40 @@ class CategoryArticlesScreen extends React.Component {
             })}
           </ScrollView>
       </View>
-      // <View>
-      //  <ScrollView style={{ height: height * 0.82 }}>
-      //  <Text style={styles.blogTitle}>
-      //       {articlesList.title}
-      //     </Text>
-      //     {/* Author View */}
-      //     <View style={{ flex: 1, height: 50, flexDirection: "row" }}>
-      //       <View style={{ width: 60, marginLeft: 5 }}>
-      //         <Image
-      //           style={styles.authorPic}
-      //           source={require("./assets/derek_circle.jpg")}
-      //         /> 
-      //       </View>
-      //       <View style={styles.author} />
-
-      //       <View style={{ width: 200, paddingTop: 15 }}>
-      //         <Text style={styles.blogAuthor}>
-      //           By: {articlesList.author}
-      //         </Text>
-      //       </View>
-      //     </View>
-
-      //     <Image
-      //       style={styles.image}
-      //       source={{
-      //         uri: articlesList.urlToImage
-      //       }}
-      //     />
-
-      //     <Text style={styles.blogContent}>{articlesList.content}</Text>
-      //   </ScrollView>
-      //       </View> 
     )
   }
 }
+class AboutUsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  
+  }
+
+  render() {
+    
+    return (
+      
+      <View>
+      <ScrollView style={{ height: height * 0.82 }}>
+        <Text
+        style={{fontSize: 36, fontWeight: 'heavy', textAlign: 'center', backgroundColor: '#38bbd8'}}
+        >About Me</Text>
+        <Text
+        style={{fontSize: 30, paddingTop: 10, paddingBottom: 10, textAlign: 'center'}}
+        >What do you get when you mix dedication, grit, creativity, passion, and blue collar with white collar?  </Text>
+        
+        <Image 
+        style={{width: width, height: 650}}
+        source={require("./assets/derek_full.jpg")} />
+        </ScrollView>
+      </View>
+    )
+  }
+}
+    
+  
+
+
 const RootStack = createStackNavigator(
   {
     Home: {
@@ -452,6 +452,9 @@ const RootStack = createStackNavigator(
     },
     CategoryArticles: {
       screen: CategoryArticlesScreen
+    },
+    AboutUs: {
+      screen: AboutUsScreen
     }
   },
   {
