@@ -220,17 +220,27 @@ class DetailsScreen extends React.Component {
         /> */}
         <TouchableOpacity
                     onPress={() =>
-                      this.props.navigation.goBack()}
+                
+                      this.props.navigation.navigate("Home", {
+                    
+                    })
+                  }
                   
                   >
         <Image style = {{marginLeft: width * .3 }}
         source = {require('./assets/eagle.jpeg')} 
-        onPress={() => this.props.navigation.goBack()}/>
+        onPress={() =>
+                
+          this.props.navigation.navigate("Home", {
+        
+        })
+      }/>
+        
         </TouchableOpacity>
-          <Button
+          {/* <Button
             title="Go back"
             onPress={() => this.props.navigation.goBack()}
-          />
+          /> */}
         </ScrollView>
         {/* TABBAR */}
         <View style={{ flex: 1, flexDirection: "row" }}>
