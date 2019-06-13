@@ -7,9 +7,11 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  SafeAreaView
+  ListView,
+  FlatList
+
 } from "react-native";
-import { createAppContainer, createStackNavigator } from "react-navigation"; // Version can be specified in package.json
+import { createAppContainer, createStackNavigator, SafeAreaView } from "react-navigation"; // Version can be specified in package.json
 import axios from "axios";
 import { Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -21,7 +23,7 @@ class HomeScreen extends React.Component {
     this.state = {
       article: []
     };
-    console.log(this.props);
+    // console.log(this.props);
   }
   componentDidMount() {
     axios
@@ -32,7 +34,7 @@ class HomeScreen extends React.Component {
         data1.sort(function(a, b) {
           return b._id.localeCompare(a._id);
         });
-        console.log("sorted", data1);
+        // console.log("sorted", data1);
         this.setState(
           {
             article: data1
@@ -49,8 +51,11 @@ class HomeScreen extends React.Component {
   }
 
   render() {
+    
     if (this.state.article.length > 0) {
+      
       return (
+        
         <View>
           <ScrollView style={{ height: height * 0.82 }}>
             {this.state.article.map(post => {
@@ -80,13 +85,76 @@ class HomeScreen extends React.Component {
             })}
           </ScrollView>
           {/* Below will be my makeshift tab bar */}
-          <Tabbar />
+         
+          {/* <Tabbar prop1={this.props.navigation} prop2={this.state.article} /> */}
+          {/* <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate("Categories", {
+                        
+                      })
+                    }
+                  
+                  > */}
+          {/* <Image
+                style={styles.authorPic}
+                source={require("./assets/derek_circle.jpg")} ></Image>
+                </TouchableOpacity> */}
+
+          <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={styles.tabBar}>
+            <TouchableOpacity
+              onPress={() =>
+                
+                  this.props.navigation.navigate("Home", {
+                
+                })
+              }
+            >
+              <Image
+                style={styles.tabBarIcon}
+                source={require("./assets/icons8-log-cabin-filled-50.png")}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tabBar}>
+          <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("Categories", {
+                  article: data1
+                  // article: this.props.prop2
+                })
+              }
+              // style={tabStyles.articleView}
+            >
+            <Image
+              style={styles.tabBarIcon}
+              source={require("./assets/icons8-category-filled-50.png")}
+            />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tabBar}>
+          <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("Categories", {
+                  // article: this.props.prop2
+                })
+              }
+              // style={tabStyles.articleView}
+            >
+            <Image
+              style={styles.tabBarIcon}
+              source={require("./assets/icons8-online-store-50.png")}
+            />
+            </TouchableOpacity>
+          </View>
         </View>
+        </View>
+        
       );
     } else {
       console.log("crap");
     }
-    return <View />;
+    return <View style={{backgroundColor: 'red'}} />;
     // return (
     //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     //     <Text>Home Screen</Text>
@@ -108,9 +176,9 @@ class DetailsScreen extends React.Component {
   render() {
     var str = this.props.navigation.state.params.article.content;
     var blogData = str.replace(/\\/g, "");
-    console.log("testy", this.props.navigation.state.params.article.title);
-    // if (this.props.navigation.state.params.article.length > 0 ) {
-    console.log("eureka", this.props.navigation.state.params.article.title);
+    // console.log("testy", this.props.navigation.state.params.article.title);
+    // // if (this.props.navigation.state.params.article.length > 0 ) {
+    // console.log("eureka", this.props.navigation.state.params.article.title);
     return (
       <View>
         <ScrollView  style = {{height: height * 0.82}}>
@@ -123,7 +191,7 @@ class DetailsScreen extends React.Component {
               <Image
                 style={styles.authorPic}
                 source={require("./assets/derek_circle.jpg")}
-              />
+              /> 
             </View>
             <View style={styles.author} />
 
@@ -150,12 +218,67 @@ class DetailsScreen extends React.Component {
             title="Go to Home"
             onPress={() => this.props.navigation.navigate('Home')}
         /> */}
+        <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.goBack()}
+                  
+                  >
+        <Image style = {{marginLeft: width * .3 }}
+        source = {require('./assets/eagle.jpeg')} 
+        onPress={() => this.props.navigation.goBack()}/>
+        </TouchableOpacity>
           <Button
             title="Go back"
             onPress={() => this.props.navigation.goBack()}
           />
         </ScrollView>
-        <Tabbar />
+        {/* TABBAR */}
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={styles.tabBar}>
+            <TouchableOpacity
+              onPress={() =>
+                
+                  this.props.navigation.navigate("Home", {
+                
+                })
+              }
+            >
+              <Image
+                style={styles.tabBarIcon}
+                source={require("./assets/icons8-log-cabin-filled-50.png")}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tabBar}>
+          <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("Categories", {
+                  article: data1
+                })
+              }
+            >
+            <Image
+              style={styles.tabBarIcon}
+              source={require("./assets/icons8-category-filled-50.png")}
+            />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tabBar}>
+          <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("Categories", {
+                  // article: this.props.prop2
+                })
+              }
+              // style={tabStyles.articleView}
+            >
+            <Image
+              style={styles.tabBarIcon}
+              source={require("./assets/icons8-online-store-50.png")}
+            />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
     // } else {
@@ -169,7 +292,143 @@ class DetailsScreen extends React.Component {
     // );
   }
 }
+class CategoriesScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.deleteTeam = this.deleteTeam.bind(this)
+  }
 
+  render() {
+    var lookup = {};
+var result = [];
+var data = this.props.navigation.state.params.article
+for (var item, i = 0; item = data[i++];) {
+    var category = item.category;
+  
+    if (!(category in lookup)) {
+      lookup[category] = 1;
+      result.push(category);
+    }
+  }   
+
+  console.log(result)
+    // var str = this.props.navigation.state.params.article.content;
+   console.log('cat', this.props)
+    return (
+      
+      <View>
+       <ScrollView style={{ height: height * 0.82 }}>
+            {result.map(post2 => {
+              // const {navigate} = this.props.navigation;
+              return (
+                <View style={styles.articleView}>
+                   <TouchableOpacity
+                      style = {styles.category}
+                      onPress = {() => this.props.navigation.navigate("CategoryArticles", {
+                        article: data,
+                        selected: post2
+                      })}>
+                     <Text style = {styles.catText}>
+                        {post2}
+                     </Text>
+                  </TouchableOpacity>
+
+                    
+                    {/* <Button
+                title="Go to New Component"
+                onPress={() => navigate('BlogPost', {name: 'Jane'})}
+                /> */}
+                  
+                  
+                </View>
+              );
+            })}
+          </ScrollView>
+      </View>
+     
+    );
+  }
+}
+class CategoryArticlesScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  
+  }
+
+  render() {
+    let articlesList = this.props.navigation.state.params.article.filter((item) => 
+    item.category === this.props.navigation.state.params.selected)
+
+    console.log('bobcat', this.props.navigation.state.params.article)
+    console.log('bobcat2', this.props.navigation.state.params.selected)
+
+    console.log('bobcat3', articlesList[0].author)
+
+    return (
+      <View>
+        <ScrollView style={{ height: height * 0.82 }}>
+            {articlesList.map(item => {
+              // const {navigate} = this.props.navigation;
+              return (
+                <View style={styles.articleView}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate("Details", {
+                        article: item
+                      })
+                    }
+                    style={styles.articleView}
+                  >
+                    <Image
+                      style={styles.image}
+                      source={{ uri: item.urlToImage }}
+                    />
+                    {/* <Button
+                title="Go to New Component"
+                onPress={() => navigate('BlogPost', {name: 'Jane'})}
+                /> */}
+                    <Text style={styles.title}>{item.title}</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </ScrollView>
+      </View>
+      // <View>
+      //  <ScrollView style={{ height: height * 0.82 }}>
+      //  <Text style={styles.blogTitle}>
+      //       {articlesList.title}
+      //     </Text>
+      //     {/* Author View */}
+      //     <View style={{ flex: 1, height: 50, flexDirection: "row" }}>
+      //       <View style={{ width: 60, marginLeft: 5 }}>
+      //         <Image
+      //           style={styles.authorPic}
+      //           source={require("./assets/derek_circle.jpg")}
+      //         /> 
+      //       </View>
+      //       <View style={styles.author} />
+
+      //       <View style={{ width: 200, paddingTop: 15 }}>
+      //         <Text style={styles.blogAuthor}>
+      //           By: {articlesList.author}
+      //         </Text>
+      //       </View>
+      //     </View>
+
+      //     <Image
+      //       style={styles.image}
+      //       source={{
+      //         uri: articlesList.urlToImage
+      //       }}
+      //     />
+
+      //     <Text style={styles.blogContent}>{articlesList.content}</Text>
+      //   </ScrollView>
+      //       </View> 
+    )
+  }
+}
 const RootStack = createStackNavigator(
   {
     Home: {
@@ -177,6 +436,12 @@ const RootStack = createStackNavigator(
     },
     Details: {
       screen: DetailsScreen
+    },
+    Categories: {
+      screen: CategoriesScreen
+    },
+    CategoryArticles: {
+      screen: CategoryArticlesScreen
     }
   },
   {
@@ -188,7 +453,7 @@ const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   render() {
-    return <AppContainer />;
+    return<AppContainer />;
   }
 }
 
@@ -200,10 +465,6 @@ const styles = StyleSheet.create({
     width: width,
     height: 150,
     marginTop: 8
-  },
-  safeArea: {
-    flex: 1,
-    backgroundColor: "blue"
   },
   tabBarIcon: {
     width: 40,
@@ -265,6 +526,17 @@ const styles = StyleSheet.create({
   authorPic: {
     width: 50,
     height: 50
+  },
+  category: {
+      padding: 10,
+      marginTop: 3,
+      height: 100,
+      backgroundColor: '#38bbd8',
+      alignItems: 'center',
+  },
+  catText: {
+    marginTop: 30,
+    fontSize: 16
   }
 });
 console.log("details", this.props);
