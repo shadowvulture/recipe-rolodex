@@ -40,7 +40,7 @@ class HomeScreen extends React.Component {
             article: data1
           },
           () => {
-            // console.log('after', this.state)
+            console.log('after', this.state)
           }
         );
       })
@@ -84,22 +84,6 @@ class HomeScreen extends React.Component {
               );
             })}
           </ScrollView>
-          {/* Below will be my makeshift tab bar */}
-         
-          {/* <Tabbar prop1={this.props.navigation} prop2={this.state.article} /> */}
-          {/* <TouchableOpacity
-                    onPress={() =>
-                      this.props.navigation.navigate("Categories", {
-                        
-                      })
-                    }
-                  
-                  > */}
-          {/* <Image
-                style={styles.authorPic}
-                source={require("./assets/derek_circle.jpg")} ></Image>
-                </TouchableOpacity> */}
-
           <View style={{ flex: 1, flexDirection: "row" }}>
           <View style={styles.tabBar}>
             <TouchableOpacity
@@ -121,10 +105,10 @@ class HomeScreen extends React.Component {
               onPress={() =>
                 this.props.navigation.navigate("Categories", {
                   article: data1
-                  // article: this.props.prop2
+      
                 })
               }
-              // style={tabStyles.articleView}
+
             >
             <Image
               style={styles.tabBarIcon}
@@ -136,14 +120,13 @@ class HomeScreen extends React.Component {
           <TouchableOpacity
               onPress={() =>
                 this.props.navigation.navigate("AboutUs", {
-                  // article: this.props.prop2
+
                 })
               }
-              // style={tabStyles.articleView}
             >
             <Image
               style={styles.tabBarIcon}
-              source={require("./assets/icons8-online-store-50.png")}
+              source={require("./assets/information-button.png")}
             />
             </TouchableOpacity>
           </View>
@@ -179,6 +162,7 @@ class DetailsScreen extends React.Component {
     // console.log("testy", this.props.navigation.state.params.article.title);
     // // if (this.props.navigation.state.params.article.length > 0 ) {
     // console.log("eureka", this.props.navigation.state.params.article.title);
+    console.log('authorpic', this.props.navigation.state.params.article.authorImg)
     return (
       <View>
         <ScrollView  style = {{height: height * 0.82}}>
@@ -190,7 +174,7 @@ class DetailsScreen extends React.Component {
             <View style={{ width: 60, marginLeft: 5 }}>
               <Image
                 style={styles.authorPic}
-                source={require("./assets/derek_circle.jpg")}
+                source={{uri: this.props.navigation.state.params.article.authorImg}}
               /> 
             </View>
             <View style={styles.author} />
@@ -277,7 +261,7 @@ class DetailsScreen extends React.Component {
           <View style={styles.tabBar}>
           <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate("Categories", {
+                this.props.navigation.navigate("AboutUs", {
                   // article: this.props.prop2
                 })
               }
@@ -285,7 +269,7 @@ class DetailsScreen extends React.Component {
             >
             <Image
               style={styles.tabBarIcon}
-              source={require("./assets/icons8-online-store-50.png")}
+              source={require("./assets/information-button.png")}
             />
             </TouchableOpacity>
           </View>
