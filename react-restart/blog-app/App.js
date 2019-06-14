@@ -9,13 +9,16 @@ import {
   TouchableOpacity,
   ListView,
   FlatList
-
 } from "react-native";
-import { createAppContainer, createStackNavigator, SafeAreaView } from "react-navigation"; // Version can be specified in package.json
+import {
+  createAppContainer,
+  createStackNavigator,
+  SafeAreaView
+} from "react-navigation"; // Version can be specified in package.json
 import axios from "axios";
 import { Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import Tabbar from './tabBar'
+import Tabbar from "./tabBar";
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -40,7 +43,7 @@ class HomeScreen extends React.Component {
             article: data1
           },
           () => {
-            console.log('after', this.state)
+            console.log("after", this.state);
           }
         );
       })
@@ -51,11 +54,8 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    
     if (this.state.article.length > 0) {
-      
       return (
-        
         <View>
           <ScrollView style={{ height: height * 0.82 }}>
             {this.state.article.map(post => {
@@ -85,59 +85,47 @@ class HomeScreen extends React.Component {
             })}
           </ScrollView>
           <View style={{ flex: 1, flexDirection: "row" }}>
-          <View style={styles.tabBar}>
-            <TouchableOpacity
-              onPress={() =>
-                
-                  this.props.navigation.navigate("Home", {
-                
-                })
-              }
-            >
-              <Image
-                style={styles.tabBarIcon}
-                source={require("./assets/icons8-log-cabin-filled-50.png")}
-              />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.tabBar}>
-          <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate("Categories", {
-                  article: data1
-      
-                })
-              }
-
-            >
-            <Image
-              style={styles.tabBarIcon}
-              source={require("./assets/icons8-category-filled-50.png")}
-            />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.tabBar}>
-          <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate("AboutUs", {
-
-                })
-              }
-            >
-            <Image
-              style={styles.tabBarIcon}
-              source={require("./assets/information-button.png")}
-            />
-            </TouchableOpacity>
+            <View style={styles.tabBar}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Home", {})}
+              >
+                <Image
+                  style={styles.tabBarIcon}
+                  source={require("./assets/icons8-log-cabin-filled-50.png")}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.tabBar}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate("Categories", {
+                    article: data1
+                  })
+                }
+              >
+                <Image
+                  style={styles.tabBarIcon}
+                  source={require("./assets/icons8-category-filled-50.png")}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.tabBar}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("AboutUs", {})}
+              >
+                <Image
+                  style={styles.tabBarIcon}
+                  source={require("./assets/information-button.png")}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-        </View>
-        
       );
     } else {
       console.log("crap");
     }
-    return <View style={{backgroundColor: 'red'}} />;
+    return <View style={{ backgroundColor: "red" }} />;
     // return (
     //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     //     <Text>Home Screen</Text>
@@ -159,13 +147,14 @@ class DetailsScreen extends React.Component {
   render() {
     var str = this.props.navigation.state.params.article.content;
     var blogData = str.replace(/\\/g, "");
-    // console.log("testy", this.props.navigation.state.params.article.title);
-    // // if (this.props.navigation.state.params.article.length > 0 ) {
-    // console.log("eureka", this.props.navigation.state.params.article.title);
-    console.log('authorpic', this.props.navigation.state.params.article.authorImg)
+
+    console.log(
+      "authorpic",
+      this.props.navigation.state.params.article.authorImg
+    );
     return (
       <View>
-        <ScrollView  style = {{height: height * 0.82}}>
+        <ScrollView style={{ height: height * 0.82 }}>
           <Text style={styles.blogTitle}>
             {this.props.navigation.state.params.article.title}
           </Text>
@@ -174,11 +163,12 @@ class DetailsScreen extends React.Component {
             <View style={{ width: 60, marginLeft: 5 }}>
               <Image
                 style={styles.authorPic}
-                source={{uri: this.props.navigation.state.params.article.authorImg}}
-              /> 
+                source={{
+                  uri: this.props.navigation.state.params.article.authorImg
+                }}
+              />
             </View>
             <View style={styles.author} />
-
             <View style={{ width: 200, paddingTop: 15 }}>
               <Text style={styles.blogAuthor}>
                 By: {this.props.navigation.state.params.article.author}
@@ -202,26 +192,18 @@ class DetailsScreen extends React.Component {
             title="Go to Home"
             onPress={() => this.props.navigation.navigate('Home')}
         /> */}
-        <TouchableOpacity
-                    onPress={() =>
-                
-                      this.props.navigation.navigate("Home", {
-                    
-                    })
-                  }
-                  
-                  >
-        <Image style = {{marginLeft: width * .3 }}
-        source = {require('./assets/eagle.jpeg')} 
-        onPress={() =>
-                
-          this.props.navigation.navigate("Home", {
-        
-        })
-      }/>
-      <Text style={{textAlign: 'center', fontSize: 24}}>Click to go back.</Text>
-        
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Home", {})}
+          >
+            <Image
+              style={{ marginLeft: width * 0.3 }}
+              source={require("./assets/eagle.jpeg")}
+              onPress={() => this.props.navigation.navigate("Home", {})}
+            />
+            <Text style={{ textAlign: "center", fontSize: 24 }}>
+              Click to go back.
+            </Text>
+          </TouchableOpacity>
           {/* <Button
             title="Go back"
             onPress={() => this.props.navigation.goBack()}
@@ -231,12 +213,7 @@ class DetailsScreen extends React.Component {
         <View style={{ flex: 1, flexDirection: "row" }}>
           <View style={styles.tabBar}>
             <TouchableOpacity
-              onPress={() =>
-                
-                  this.props.navigation.navigate("Home", {
-                
-                })
-              }
+              onPress={() => this.props.navigation.navigate("Home", {})}
             >
               <Image
                 style={styles.tabBarIcon}
@@ -245,21 +222,21 @@ class DetailsScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={styles.tabBar}>
-          <TouchableOpacity
+            <TouchableOpacity
               onPress={() =>
                 this.props.navigation.navigate("Categories", {
                   article: data1
                 })
               }
             >
-            <Image
-              style={styles.tabBarIcon}
-              source={require("./assets/icons8-category-filled-50.png")}
-            />
+              <Image
+                style={styles.tabBarIcon}
+                source={require("./assets/icons8-category-filled-50.png")}
+              />
             </TouchableOpacity>
           </View>
           <View style={styles.tabBar}>
-          <TouchableOpacity
+            <TouchableOpacity
               onPress={() =>
                 this.props.navigation.navigate("AboutUs", {
                   // article: this.props.prop2
@@ -267,10 +244,10 @@ class DetailsScreen extends React.Component {
               }
               // style={tabStyles.articleView}
             >
-            <Image
-              style={styles.tabBarIcon}
-              source={require("./assets/information-button.png")}
-            />
+              <Image
+                style={styles.tabBarIcon}
+                source={require("./assets/information-button.png")}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -295,133 +272,139 @@ class CategoriesScreen extends React.Component {
 
   render() {
     var lookup = {};
-var result = [];
-var data = this.props.navigation.state.params.article
-for (var item, i = 0; item = data[i++];) {
-    var category = item.category;
-  
-    if (!(category in lookup)) {
-      lookup[category] = 1;
-      result.push(category);
+    var result = [];
+    var data = this.props.navigation.state.params.article;
+    for (var item, i = 0; (item = data[i++]); ) {
+      var category = item.category;
+
+      if (!(category in lookup)) {
+        lookup[category] = 1;
+        result.push(category);
+      }
     }
-  }   
 
-  console.log(result)
+    console.log(result);
     // var str = this.props.navigation.state.params.article.content;
-   console.log('cat', this.props)
+    console.log("cat", this.props);
     return (
-      
       <View>
-       <ScrollView style={{ height: height * 0.82 }}>
-            {result.map(post2 => {
-              // const {navigate} = this.props.navigation;
-              return (
-                <View style={styles.articleView}>
-                   <TouchableOpacity
-                      style = {styles.category}
-                      onPress = {() => this.props.navigation.navigate("CategoryArticles", {
-                        article: data,
-                        selected: post2
-                      })}>
-                     <Text style = {styles.catText}>
-                        {post2}
-                     </Text>
-                  </TouchableOpacity>
+        <ScrollView style={{ height: height * 0.82 }}>
+          {result.map(post2 => {
+            // const {navigate} = this.props.navigation;
+            return (
+              <View style={styles.articleView}>
+                <TouchableOpacity
+                  style={styles.category}
+                  onPress={() =>
+                    this.props.navigation.navigate("CategoryArticles", {
+                      article: data,
+                      selected: post2
+                    })
+                  }
+                >
+                  <Text style={styles.catText}>{post2}</Text>
+                </TouchableOpacity>
 
-                    
-                    {/* <Button
+                {/* <Button
                 title="Go to New Component"
                 onPress={() => navigate('BlogPost', {name: 'Jane'})}
                 /> */}
-                  
-                  
-                </View>
-              );
-            })}
-          </ScrollView>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
-     
     );
   }
 }
 class CategoryArticlesScreen extends React.Component {
   constructor(props) {
     super(props);
-  
   }
 
   render() {
-    let articlesList = this.props.navigation.state.params.article.filter((item) => 
-    item.category === this.props.navigation.state.params.selected)
+    let articlesList = this.props.navigation.state.params.article.filter(
+      item => item.category === this.props.navigation.state.params.selected
+    );
 
-    console.log('bobcat', this.props.navigation.state.params.article)
-    console.log('bobcat2', this.props.navigation.state.params.selected)
+    console.log("bobcat", this.props.navigation.state.params.article);
+    console.log("bobcat2", this.props.navigation.state.params.selected);
 
-    console.log('bobcat3', articlesList[0].author)
+    console.log("bobcat3", articlesList[0].author);
 
     return (
       <View>
         <ScrollView style={{ height: height * 0.82 }}>
-            {articlesList.map(item => {
-              // const {navigate} = this.props.navigation;
-              return (
-                <View style={styles.articleView}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      this.props.navigation.navigate("Details", {
-                        article: item
-                      })
-                    }
-                    style={styles.articleView}
-                  >
-                    <Image
-                      style={styles.image}
-                      source={{ uri: item.urlToImage }}
-                    />
-                    {/* <Button
+          {articlesList.map(item => {
+            // const {navigate} = this.props.navigation;
+            return (
+              <View style={styles.articleView}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate("Details", {
+                      article: item
+                    })
+                  }
+                  style={styles.articleView}
+                >
+                  <Image
+                    style={styles.image}
+                    source={{ uri: item.urlToImage }}
+                  />
+                  {/* <Button
                 title="Go to New Component"
                 onPress={() => navigate('BlogPost', {name: 'Jane'})}
                 /> */}
-                    <Text style={styles.title}>{item.title}</Text>
-                  </TouchableOpacity>
-                </View>
-              );
-            })}
-          </ScrollView>
+                  <Text style={styles.title}>{item.title}</Text>
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
-    )
+    );
   }
 }
 class AboutUsScreen extends React.Component {
   constructor(props) {
     super(props);
-  
   }
 
   render() {
-    
     return (
-      
       <View>
-      <ScrollView style={{ height: height * 0.82 }}>
-        <Text
-        style={{fontSize: 36, fontWeight: 'heavy', textAlign: 'center', backgroundColor: '#38bbd8'}}
-        >About Me</Text>
-        <Text
-        style={{fontSize: 30, paddingTop: 10, paddingBottom: 10, textAlign: 'center'}}
-        >What do you get when you mix dedication, grit, creativity, passion, and blue collar with white collar?  </Text>
-        
-        <Image 
-        style={{width: width, height: 650}}
-        source={require("./assets/derek_full.jpg")} />
+        <ScrollView style={{ height: height * 0.82 }}>
+          <Text
+            style={{
+              fontSize: 36,
+              fontWeight: "heavy",
+              textAlign: "center",
+              backgroundColor: "#38bbd8"
+            }}
+          >
+            About Me
+          </Text>
+          <Text
+            style={{
+              fontSize: 30,
+              paddingTop: 10,
+              paddingBottom: 10,
+              textAlign: "center"
+            }}
+          >
+            What do you get when you mix dedication, grit, creativity, passion,
+            and blue collar with white collar?{" "}
+          </Text>
+
+          <Image
+            style={{ width: width, height: 650 }}
+            source={require("./assets/derek_full.jpg")}
+          />
         </ScrollView>
       </View>
-    )
+    );
   }
 }
-    
-  
-
 
 const RootStack = createStackNavigator(
   {
@@ -450,7 +433,7 @@ const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   render() {
-    return<AppContainer />;
+    return <AppContainer />;
   }
 }
 
@@ -525,11 +508,11 @@ const styles = StyleSheet.create({
     height: 50
   },
   category: {
-      padding: 10,
-      marginTop: 3,
-      height: 100,
-      backgroundColor: '#38bbd8',
-      alignItems: 'center',
+    padding: 10,
+    marginTop: 3,
+    height: 100,
+    backgroundColor: "#38bbd8",
+    alignItems: "center"
   },
   catText: {
     marginTop: 30,
